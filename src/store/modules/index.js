@@ -1,5 +1,7 @@
-import apply from './apply'
+import store from './store'
+import promise from './promise'
 
 export {
-    apply
+    store,
+    promise
 }

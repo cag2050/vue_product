@@ -1,4 +1,4 @@
-import apply from '../../api/apply'
+import store from '../../api/store'
 
 export default {
     namespaced: true,
@@ -10,10 +10,10 @@ export default {
     getters: {},
     actions: {
         // 将值设置在vuex的state中，然后组件中读取state中的值
-        // 还有一种方式是返回一个Promise，下个接口进行说明
+        // 还有一种方式是返回一个Promise
         getUser ({commit}) {
             commit('request')
-            apply.getUser(
+            store.getUser(
                 data => commit('success', data),
                 error => commit('failure', error),
                 catchError => commit('failure', catchError)
@@ -35,7 +35,7 @@ export default {
 
         failure (state, error) {
             state.status = error.status
-            state.message = error.statusText
+            // state.message = error.statusText
             state.message = '请求失败'
         }
     }

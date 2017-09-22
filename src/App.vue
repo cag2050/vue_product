@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     路由列表：<br/>
-    <router-link to='/'>demo</router-link><br/>
+    <router-link to='/'>StoreDemo</router-link><br/>
+    <router-link to='/promisedemo'>PromiseDemo</router-link><br/>
     <router-link to='/hello'>hello页面</router-link><br/>
     <div>============以下是内容=============</div>
     <router-view></router-view>
