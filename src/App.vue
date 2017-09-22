@@ -2,7 +2,7 @@
 #app
     vue-progress-bar
     transition-group(name='fade' mode='out-in')
-        div(key='router') 路由列表:
+        div(key='router') 路由列表:<br/>
             router-link(to='/') StoreDemo <br/>
             router-link(to='/promisedemo') PromiseDemo <br/>
             router-link(to='/hello') hello页面 <br/>

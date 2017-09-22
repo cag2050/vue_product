@@ -8,6 +8,7 @@
 1. vuex-router-sync
 1. vue-progressbar
 1. normalize.css
+1. element-ui
 
 ### 从接口取数据后，有2种处理方式：
 1. 将数据保存在store中，然后在组件中取store里state的值。

@@ -7,8 +7,10 @@ import store from './store'
 import router from './router'
 import { sync } from 'vuex-router-sync'
 import ProgressBar from 'vue-progressbar'
+import ElementUI from 'element-ui'
 
 import 'normalize.css'
+import './assets/theme/index.css'
 
 Vue.config.productionTip = false
 
@@ -21,6 +23,8 @@ const options = {
     color: '#77b6ff'
 }
 Vue.use(ProgressBar, options)
+
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 // new Vue({
