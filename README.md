@@ -2,6 +2,13 @@
 
 > A Vue.js project
 
+### 基于vue init webpack [project_name]新加的功能：
+1. vue-resource
+1. vuex
+1. vuex-router-sync
+1. vue-progressbar
+1. normalize.css
+
 ### 从接口取数据后，有2种处理方式：
 1. 将数据保存在store中，然后在组件中取store里state的值。
 1. 返回一个promise，在组件中操作这个promise。

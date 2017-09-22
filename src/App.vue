@@ -1,17 +1,45 @@
-<template>
-  <div id="app">
-    路由列表：<br/>
-    <router-link to='/'>StoreDemo</router-link><br/>
-    <router-link to='/promisedemo'>PromiseDemo</router-link><br/>
-    <router-link to='/hello'>hello页面</router-link><br/>
-    <div>============以下是内容=============</div>
-    <router-view></router-view>
-  </div>
+<template lang='pug'>
+#app
+    vue-progress-bar
+    transition-group(name='fade' mode='out-in')
+        div(key='router') 路由列表:
+            router-link(to='/') StoreDemo <br/>
+            router-link(to='/promisedemo') PromiseDemo <br/>
+            router-link(to='/hello') hello页面 <br/>
+        div(key='tip') ============以下是内容=============
+        router-view(key='router-view')
 </template>
 
 <script>
 export default {
-    name: 'app'
+    name: 'app',
+    created () {
+        //  [App.vue specific] When App.vue is first loaded start the progress bar
+        this.$Progress.start()
+        //  hook the progress bar to start before we move router-view
+        this.$router.beforeEach((to, from, next) => {
+        //  does the page we want to go to have a meta.progress object
+            if (to.meta.progress !== undefined) {
+                let meta = to.meta.progress
+                // parse meta tags
+                this.$Progress.parseMeta(meta)
+            }
+            //  start the progress bar
+            this.$Progress.start()
+            //  continue to next page
+            next()
+        })
+
+        //  hook the progress bar to finish after we've finished moving router-view
+        this.$router.afterEach((to, from) => {
+            //  finish the progress bar
+            this.$Progress.finish()
+        })
+    },
+    mounted () {
+        //  [App.vue specific] When App.vue is finish loading finish the progress bar
+        this.$Progress.finish()
+    }
 }
 </script>
 

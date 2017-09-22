@@ -6,6 +6,9 @@ import Resource from 'vue-resource'
 import store from './store'
 import router from './router'
 import { sync } from 'vuex-router-sync'
+import ProgressBar from 'vue-progressbar'
+
+import 'normalize.css'
 
 Vue.config.productionTip = false
 
@@ -13,6 +16,11 @@ sync(store, router)
 
 Vue.use(Resource)
 Vue.http.options.emulateJSON = true
+
+const options = {
+    color: '#77b6ff'
+}
+Vue.use(ProgressBar, options)
 
 /* eslint-disable no-new */
 // new Vue({
