@@ -15,21 +15,22 @@ export default {
         }
     },
     created () {
+        console.log(this)
         this.fetch()
             .then(response => {
                 if (response.status === 200) {
-                    console.log('=== 200')
-                    console.log(response)
+                    // console.log('=== 200')
+                    // console.log(response)
                     this.userInfo = response.body
                 } else {
-                    console.log('!== 200')
-                    console.log(response)
+                    // console.log('!== 200')
+                    // console.log(response)
                 }
             })
             // 网络错误、url地址错误、请求超时，能被catch捕获
             // 在此处理这些错误
             .catch(error => {
-                console.log('catch error')
+                // console.log('catch error')
                 console.log(error)
             })
     },
