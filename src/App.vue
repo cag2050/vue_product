@@ -51,10 +51,13 @@ export default {
   text-align: center;
   color: #2c3e50;
 
+// 定义 transition-group 的过渡效果。
+// 一定时间内，针对opacity的transition完成。如果不想要这个效果，可以将时间设置为0
 .fade-enter-active
 .fade-leave-active
-    transition opacity .5s ease
-
+    transition opacity .1s ease
+// 开始enter的时候，透明度为0，变为1；开始leave的时候，透明度为1，变为0
+// 此处只需要写进入元素的开始enter:v-enter、离开元素的leave结束:v-leave-to(v-是这些过渡类名的前缀)
 .fade-enter
 .fade-leave-to
     opacity 0
