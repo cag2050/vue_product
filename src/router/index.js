@@ -19,7 +19,7 @@ export default new Router({
             path: '/promisedemo',
             name: 'PromiseDemo',
             // 使用webpack的[require.ensure](https://doc.webpack-china.org/api/module-methods#require-ensure)技术，也可以实现按需加载。
-            // 这种情况下，多个路由指定相同的chunkName，会合并打包成一个js文件。
+            // 这种情况下，多个路由指定相同的chunkName，会合并打包成一个js文件；如果不指定chunkName，则和使用vue的异步组件一样，每个组件生产打包成一个js文件。
             // 这个组件PromiseDemo 和下面的 Hello 组件，指定了相同的chunkName，因此会合并打包成一个js文件。
             component: r => require.ensure([], () => r(require('../components/PromiseDemo')), 'demo')
         },
