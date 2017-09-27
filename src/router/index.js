@@ -3,6 +3,15 @@ import Router from 'vue-router'
 // import Hello from '@/components/Hello'
 // import StoreDemo from '@/components/StoreDemo'
 // import PromiseDemo from '@/components/PromiseDemo'
+// import ImportFuncDemo from '@/components/ImportFuncDemo'
+
+// 下面2行代码，没有指定webpackChunkName，每个组件打包成一个js文件。
+const ImportFuncDemo1 = () => import('../components/ImportFuncDemo1')
+const ImportFuncDemo2 = () => import('../components/ImportFuncDemo2')
+
+// 下面2行代码，指定了相同的webpackChunkName，会合并打包成一个js文件。
+// const ImportFuncDemo = () => import(/* webpackChunkName: 'ImportFuncDemo' */ '../components/ImportFuncDemo')
+// const ImportFuncDemo2 = () => import(/* webpackChunkName: 'ImportFuncDemo' */ '../components/ImportFuncDemo2')
 
 Vue.use(Router)
 
@@ -28,6 +37,16 @@ export default new Router({
             name: 'Hello',
             // component: Hello
             component: r => require.ensure([], () => r(require('../components/Hello')), 'demo')
+        },
+        {
+            path: '/importfuncdemo1',
+            name: 'ImportFuncDemo1',
+            component: ImportFuncDemo1
+        },
+        {
+            path: '/importfuncdemo2',
+            name: 'ImportFuncDemo2',
+            component: ImportFuncDemo2
         }
     ]
 })

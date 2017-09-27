@@ -3,9 +3,11 @@
     vue-progress-bar
     transition-group(name='fade' mode='out-in')
         div(key='router') 路由列表:<br/>
-            router-link(to='/') StoreDemo <br/>
-            router-link(to='/promisedemo') PromiseDemo <br/>
-            router-link(to='/hello') hello页面 <br/>
+            router-link(to='/') StoreDemo页面 <br/>
+            router-link(to='/promisedemo') PromiseDemo页面 <br/>
+            router-link(to='/hello') Hello页面 <br/>
+            router-link(to='/importfuncdemo1') ImportFuncDemo1页面 <br/>
+            router-link(to='/importfuncdemo2') ImportFuncDemo2页面 <br/>
         div(key='tip') ============以下是内容=============
         router-view(key='router-view')
 </template>

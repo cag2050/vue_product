@@ -15,7 +15,6 @@ export default {
         }
     },
     created () {
-        console.log(this)
         this.fetch()
             .then(response => {
                 if (response.status === 200) {
