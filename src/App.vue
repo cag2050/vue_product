@@ -2,14 +2,14 @@
 #app
     vue-progress-bar
     transition-group(name='fade' mode='out-in')
-        div(key='router') 路由列表:<br/>
+        .routers(key='router') 路由列表:<br/>
             router-link(to='/') StoreDemo页面 <br/>
             router-link(to='/promisedemo') PromiseDemo页面 <br/>
             router-link(to='/hello') Hello页面 <br/>
             router-link(to='/importfuncdemo1') ImportFuncDemo1页面 <br/>
             router-link(to='/importfuncdemo2') ImportFuncDemo2页面 <br/>
-        div(key='tip') ============以下是内容=============
-        router-view(key='router-view')
+        div.tip(key='tip') ============以下是内容=============
+        router-view.view(key='router-view')
 </template>
 
 <script>
@@ -47,11 +47,18 @@ export default {
 
 <style lang='stylus'>
 #app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+
+    .routers
+        position fixed
+
+    .tip, .view
+        padding-left 200px
+
 
 // 定义 transition-group 的过渡效果。
 // 一定时间内，针对opacity的transition完成。如果不想要这个效果，可以将时间设置为0

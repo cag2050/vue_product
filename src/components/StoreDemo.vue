@@ -1,7 +1,9 @@
 <template lang='pug'>
 div 将接口返回的数据保存在store中，组件从store中读取state值的例子。
     div 接口返回用户信息：
-    div(v-show='show') {{ this.userInfo }}
+    div(v-show='show')
+        ul
+            li(v-for='(value,key) in this.userInfo') {{ key }} : {{ value }}
 </template>
 
 <script>
