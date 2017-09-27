@@ -8,7 +8,7 @@
             router-link(to='/hello') Hello页面 <br/>
             router-link(to='/importfuncdemo1') ImportFuncDemo1页面 <br/>
             router-link(to='/importfuncdemo2') ImportFuncDemo2页面 <br/>
-        div.tip(key='tip') ============以下是内容=============
+        .tip(key='tip') ============以下是内容=============
         router-view.view(key='router-view')
 </template>
 

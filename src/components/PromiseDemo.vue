@@ -1,7 +1,9 @@
 <template lang='pug'>
 div 返回一个Promise，对promise再进行操作。
     div 接口返回用户信息：
-    div {{ this.userInfo }}
+    div(v-show='show')
+        ul
+            li(v-for='(value,key) in this.userInfo') {{ key }} : {{ value }}
 </template>
 
 <script>
@@ -34,6 +36,9 @@ export default {
             })
     },
     computed: {
+        show () {
+            return this.userInfo !== ''
+        }
     },
     methods: {
         ...mapActions({
