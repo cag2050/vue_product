@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
-// import StoreDemo from '@/components/StoreDemo'
-// import PromiseDemo from '@/components/PromiseDemo'
-// import ImportFuncDemo from '@/components/ImportFuncDemo'
 
 // 下面2行代码，没有指定webpackChunkName，每个组件打包成一个js文件。
 const ImportFuncDemo1 = () => import('../components/ImportFuncDemo1')
@@ -35,7 +31,6 @@ export default new Router({
         {
             path: '/hello',
             name: 'Hello',
-            // component: Hello
             component: r => require.ensure([], () => r(require('../components/Hello')), 'demo')
         },
         {
