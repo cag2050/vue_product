@@ -9,10 +9,11 @@
             router-link(to='/importfuncdemo1') ImportFuncDemo1页面 <br/>
             router-link(to='/importfuncdemo2') ImportFuncDemo2页面 <br/>
         .tip(key='tip') ============以下是内容=============
-        router-view.view(key='router-view')
+        router-view.view(key='router-view' v-loading='loading' element-loading-text='数据加载中，请稍候...')
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'app',
     created () {
@@ -41,6 +42,16 @@ export default {
     mounted () {
         //  [App.vue specific] When App.vue is finish loading finish the progress bar
         this.$Progress.finish()
+    },
+    computed: {
+        loading () {
+            // return true
+            return this.isLoading
+        },
+        ...mapGetters({
+            isLoading: 'isLoading',
+            hasError: 'hasError'
+        })
     }
 }
 </script>
