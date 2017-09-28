@@ -32,9 +32,30 @@ Vue.use(Resource)
 Vue.http.options.emulateJSON = true
 Vue.http.interceptors.push(function (request, next) {
     // development environment http proxy setting, in order to solve the cross-site request problem
+    if (process.env.NODE_ENV === 'development') {
+        // request.url = '/api/' + request.url
+    }
+    // let {globalLoading = true} = request
+    let globalLoading = true
+    if (request.method === 'POST') {
+        globalLoading = false
+    }
+    globalLoading && store.commit('request', request.url)
 
     // continue to next interceptor
-    next()
+    next(function (response) {
+        console.log(response)
+        response.body = null
+        if (response.body === null) {
+            response.body = {code: 204, msg: 'No content found'}
+        }
+        if (response.status === 200) {
+            globalLoading && store.commit('success', request.url)
+        } else {
+            store.commit('error', {api: request.url, error: '请求失败'})
+        }
+    })
+    // next()
 })
 
 const options = {

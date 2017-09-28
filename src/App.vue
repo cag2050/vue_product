@@ -54,7 +54,7 @@ export default {
         })
     },
     watch: {
-        hasError: status => console.log(status)
+        hasError: hasError => console.log(hasError)
     }
 }
 </script>
