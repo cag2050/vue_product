@@ -52,6 +52,9 @@ export default {
             isLoading: 'isLoading',
             hasError: 'hasError'
         })
+    },
+    watch: {
+        hasError: status => console.log(status)
     }
 }
 </script>

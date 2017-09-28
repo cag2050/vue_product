@@ -19,7 +19,6 @@ export default new Vuex.Store({
             state.error = null
         },
         success (state, api) {
-            console.log(api)
             let index = state.requestQueue.indexOf(api)
             state.requestQueue.splice(index, 1)
         },
