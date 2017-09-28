@@ -32,9 +32,12 @@ Vue.use(Resource)
 Vue.http.options.emulateJSON = true
 Vue.http.interceptors.push(function (request, next) {
     // development environment http proxy setting, in order to solve the cross-site request problem
+    let token = sessionStorage.getItem('creator_token') || localStorage.getItem('creator_token') || ''
     if (process.env.NODE_ENV === 'development') {
         // request.url = '/api/' + request.url
     }
+    token !== '' && request.headers.set('Authorization', 'Bearer ' + token)
+
     // let {globalLoading = true} = request
     let globalLoading = true
     if (request.method === 'POST') {
@@ -45,14 +48,13 @@ Vue.http.interceptors.push(function (request, next) {
     // continue to next interceptor
     next(function (response) {
         console.log(response)
-        response.body = null
         if (response.body === null) {
             response.body = {code: 204, msg: 'No content found'}
         }
         if (response.status === 200) {
             globalLoading && store.commit('success', request.url)
         } else {
-            store.commit('error', {api: request.url, error: '请求失败'})
+            store.commit('error', {api: request.url, error: response})
         }
     })
     // next()
