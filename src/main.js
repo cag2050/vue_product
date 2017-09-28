@@ -32,7 +32,7 @@ Vue.use(Resource)
 Vue.http.options.emulateJSON = true
 Vue.http.interceptors.push(function (request, next) {
     // development environment http proxy setting, in order to solve the cross-site request problem
-    let token = sessionStorage.getItem('creator_token') || localStorage.getItem('creator_token') || ''
+    let token = sessionStorage.getItem('site_token') || localStorage.getItem('site_token') || ''
     if (process.env.NODE_ENV === 'development') {
         // request.url = '/api/' + request.url
     }
