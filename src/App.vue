@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
     name: 'app',
     created () {
@@ -48,13 +48,56 @@ export default {
             // return true
             return this.isLoading
         },
+        ...mapState({
+            error: state => state.error
+        }),
         ...mapGetters({
             isLoading: 'isLoading',
             hasError: 'hasError'
         })
     },
     watch: {
-        hasError: hasError => console.log(hasError)
+        hasError: function (hasError) {
+            if (hasError) {
+                let message = null
+                let cb = null
+                let vm = this
+                switch (this.error.status) {
+                    // 此处根据接口返回码进行各种验证，比如：登录过期、路由跳转
+                    case 100002:
+                        message = '登录过期请重新登录～'
+                        cb = function () {
+                            vm.$router.push('/login')
+                        }
+                        break
+                    case 404:
+                        message = this.error.statusText && this.error.statusText !== '' ? this.error.statusText : '网络好像有问题哦，请刷新重试～'
+                        cb = function () {
+                            console.log(message)
+                        }
+                        break
+                    default:
+                        message = this.error.statusText && this.error.statusText !== '' ? this.error.statusText : '网络好像有问题哦，请刷新重试～'
+                }
+                let callback = function () {
+                    vm.$store.commit('resetError')
+                    if (typeof cb === 'function') {
+                        cb()
+                    }
+                }
+                if (message !== null) {
+                    this.$message({
+                        type: 'error',
+                        message: message,
+                        duration: 0,
+                        showClose: true,
+                        onClose: callback
+                    })
+                } else {
+                    callback()
+                }
+            }
+        }
     }
 }
 </script>

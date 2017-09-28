@@ -47,7 +47,6 @@ Vue.http.interceptors.push(function (request, next) {
 
     // continue to next interceptor
     next(function (response) {
-        console.log(response)
         if (response.body === null) {
             response.body = {code: 204, msg: 'No content found'}
         }
