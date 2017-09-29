@@ -3,7 +3,7 @@ import Vue from 'vue'
 export default {
     getUser (cb, errorCb, catchCb) {
         return Vue.http.get('https://api.github.com/users/cag2050')
-        // return Vue.http.get('https://api.github.com/users/cag2050', { timeout: 100 })
+        // return Vue.http.get('https://api.github.com/users/cag2050', {timeout: 100})
             .then((response) => {
                 // success callback
                 // response.status = 300
