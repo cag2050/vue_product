@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-### 基于vue init webpack [project_name]新加的功能：
+### 基于[vue-cli](https://github.com/vuejs/vue-cli)命令：vue init webpack [project_name]构建的项目，新加的功能：
 1. vue-resource(添加全局拦截器[interceptors](https://github.com/pagekit/vue-resource/blob/develop/docs/http.md#interceptors))
 1. vuex
 1. vuex-router-sync
