@@ -38,8 +38,7 @@ Vue.http.interceptors.push(function (request, next) {
     }
     token !== '' && request.headers.set('Authorization', 'Bearer ' + token)
 
-    // let {globalLoading = true} = request
-    let globalLoading = true
+    let {globalLoading = true} = request
     if (request.method === 'POST') {
         globalLoading = false
     }
