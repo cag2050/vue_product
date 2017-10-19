@@ -76,6 +76,9 @@ Vue.use(ElementUI)
 new Vue({
     store,
     router,
+    data: {
+        Bus: new Vue() // 用作event-bus总线
+    },
     render: h => h(App)
 }).$mount('#app')
 
