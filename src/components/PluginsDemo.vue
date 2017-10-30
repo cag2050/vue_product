@@ -9,7 +9,7 @@ div
             p 全局 Vue.filter 测试:
             p {{ number | vcntFormat }}
         li
-            p 全局 mixin的directive 测试（点击外面:
+            p 全局 mixin的directive 测试:
             p(:class="bgColor === 'yellow' ? 'bgYellow' : 'bgBlue'" v-clickoutside='clickOutside') 点击此区域外，此区域背景颜色会交替变换黄、蓝色
 </template>
 
