@@ -8,6 +8,7 @@ import router from './router'
 import {sync} from 'vuex-router-sync'
 import ProgressBar from 'vue-progressbar'
 import ElementUI from 'element-ui'
+import PluginsUtil from './pluginsUtil'
 
 import 'normalize.css'
 import './assets/theme/index.css'
@@ -64,6 +65,8 @@ const options = {
 Vue.use(ProgressBar, options)
 
 Vue.use(ElementUI)
+
+Vue.use(PluginsUtil)
 
 /* eslint-disable no-new */
 // new Vue({

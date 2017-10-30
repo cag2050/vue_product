@@ -8,6 +8,7 @@
             router-link(to='/hello') Hello页面 <br/>
             router-link(to='/importfuncdemo1') ImportFuncDemo1页面 <br/>
             router-link(to='/importfuncdemo2') ImportFuncDemo2页面 <br/>
+            router-link(to='/pluginsdemo') PluginsDemo页面 <br/>
         .tip(key='tip') ============以下是内容=============
         router-view.view(key='router-view' v-loading='loading' element-loading-text='数据加载中，请稍候...')
 </template>
