@@ -10,7 +10,7 @@ div
             p {{ number | vcntFormat }}
         li
             p 全局 mixin的directive 测试:
-            p(:class="bgColor === 'yellow' ? 'bgYellow' : 'bgBlue'" v-clickoutside='clickOutside') 点击此区域外，此区域背景颜色会交替变换黄、蓝色
+            p(:class="bgColorIsYellow === true ? 'bgYellow' : 'bgBlue'" v-clickoutside='clickOutside') 点击此区域外，此区域背景颜色会交替变换黄、蓝色
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
     data () {
         return {
             number: 120000,
-            bgColor: 'yellow'
+            bgColorIsYellow: true
         }
     },
     mounted () {
@@ -33,7 +33,7 @@ export default {
     methods: {
         clickOutside () {
             console.log('clickOutside 事件触发')
-            this.bgColor === 'yellow' ? this.bgColor = 'blue' : this.bgColor = 'yellow'
+            this.bgColorIsYellow === true ? this.bgColorIsYellow = false : this.bgColorIsYellow = true
         }
     }
 }
