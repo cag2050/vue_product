@@ -28,6 +28,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    /*
+    proxyTable: {
+        // 开发环境解决跨域
+        // 出处：https://segmentfault.com/a/1190000011715088
+        // 把虚拟的这个api接口，去掉，此时真正去后端请求的时候，不会加上api这个前缀了；但是，页面发起http请求的时候，必须加上api前缀才能匹配到这个代理
+        '/api': {
+            target: 'http://www.xxx.com',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': ''
+            }
+        }
+    },
+    */
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

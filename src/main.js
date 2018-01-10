@@ -35,6 +35,11 @@ Vue.http.interceptors.push(function (request, next) {
     // development environment http proxy setting, in order to solve the cross-site request problem
     let token = sessionStorage.getItem('site_token') || localStorage.getItem('site_token') || ''
     if (process.env.NODE_ENV === 'development') {
+        // 开发环境解决跨域
+        // 如果在 config/index.js 配置了proxyTable
+        // 出处：https://segmentfault.com/a/1190000011715088
+        // 把虚拟的这个api接口，去掉，此时真正去后端请求的时候，不会加上api这个前缀了；但是，页面发起http请求的时候，必须加上api前缀才能匹配到这个代理
+        // 此处，就是必须加上 api前缀
         // request.url = '/api/' + request.url
     }
     token !== '' && request.headers.set('Authorization', 'Bearer ' + token)
